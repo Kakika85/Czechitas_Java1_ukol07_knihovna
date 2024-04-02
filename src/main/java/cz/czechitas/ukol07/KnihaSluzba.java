@@ -13,8 +13,7 @@ public class KnihaSluzba {
     public KnihaSluzba() {
         try (InputStream inputStream = KnihaSluzba.class.getResourceAsStream("knihy.json")) { // "cz/czechitas/ukol07/knihy.json"
             ObjectMapper objectMapper = new ObjectMapper();
-            bookList = objectMapper.readValue(inputStream, new TypeReference<List<Book>>() {
-            });
+            bookList = objectMapper.readValue(inputStream, new TypeReference<List<Book>>() {});
         } catch (IOException e) {
             e.printStackTrace();
         }
