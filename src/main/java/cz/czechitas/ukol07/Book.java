@@ -1,15 +1,31 @@
 package cz.czechitas.ukol07;
 
-import java.util.List;
-
 public class Book {
-    private List<Book> bookList;
+   private String author;
+   private String title;
+   private int yearOfPublication;
 
-    public List<Book> getBookList() {
-        return bookList;
-    }
+   public String getAuthor() {
+      return author;
+   }
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
+   public void setAuthor(String author) {
+      this.author = author;
+   }
+
+   public String getTitle() {
+      return title;
+   }
+
+   public void setTitle(String title) {
+      this.title = title;
+   }
+
+   public int getYearOfPublication() {
+      return yearOfPublication;
+   }
+
+   public void setYearOfPublication(int yearOfPublication) {
+      this.yearOfPublication = yearOfPublication;
+   }
 }
