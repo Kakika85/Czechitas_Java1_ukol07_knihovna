@@ -24,5 +24,15 @@ public class KnihaSluzba {
         return bookList;
     }
 
+    public List<Book> getBooklistByTitleOfPublication(String author) {
+        return bookList.stream()
+            .filter(book -> author.equals(book.getAuthor()))
+            .toList();
+    }
 
+    public List<Book> getBooklistByTitleOfPublication(int yearOfPublication) {
+        return bookList.stream()
+            .filter(book -> yearOfPublication == book.getYearOfPublication())
+            .toList();
+    }
 }

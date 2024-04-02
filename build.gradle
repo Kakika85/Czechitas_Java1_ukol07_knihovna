@@ -8,6 +8,10 @@ java {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
 repositories {
     mavenCentral()
 }
@@ -21,14 +25,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
-test {
-    useJUnitPlatform()
-}
-
 application {
     mainClass = "cz.czechitas.ukol07.Aplikace"
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+test {
+    useJUnitPlatform()
 }
