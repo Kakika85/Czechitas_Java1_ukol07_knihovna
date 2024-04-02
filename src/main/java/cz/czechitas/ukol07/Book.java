@@ -6,10 +6,14 @@ public class Book {
    private int yearOfPublication;
 
    public String getAuthor() {
+
       return author;
    }
 
    public void setAuthor(String author) {
+      if (author == null || author.equals("")){
+         throw new IllegalArgumentException("Autor knihy je povinný údaj. Prosím vyplňte.");
+      }
       this.author = author;
    }
 
@@ -18,6 +22,9 @@ public class Book {
    }
 
    public void setTitle(String title) {
+      if (title == null || title.equals("")){
+         throw new IllegalArgumentException("Název knihy je povinný údaj. Prosím vyplňte.");
+      }
       this.title = title;
    }
 
@@ -26,6 +33,9 @@ public class Book {
    }
 
    public void setYearOfPublication(int yearOfPublication) {
+      if (yearOfPublication < 1440){
+         throw new IllegalArgumentException("Rok výtisku knihy nemůže být starší než 1440");
+      }
       this.yearOfPublication = yearOfPublication;
    }
 }
