@@ -8,18 +8,18 @@ import org.junit.jupiter.api.TestInstance;
 import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class KnihaSluzbaTest {
+class BookServiceTest {
 
-    KnihaSluzba knihaSluzba;
+    BookService bookService;
 
     @BeforeAll
     void prepareTest() {
-        knihaSluzba = new KnihaSluzba();
+        bookService = new BookService();
     }
 
     @Test
     void getBookList() {
-        List<Book> bookList = knihaSluzba.getBookList();
+        List<Book> bookList = bookService.getBookList();
 
         Assertions.assertEquals(15, bookList.size());
     }
@@ -28,7 +28,7 @@ class KnihaSluzbaTest {
     void getBooklistByAuthor_Single() {
         String author = "Ray Bradbury";
 
-        List<Book> booklistByAuthor = knihaSluzba.getBooklistByTitleOfPublication(author);
+        List<Book> booklistByAuthor = bookService.getBooklistByTitleOfPublication(author);
 
         Assertions.assertEquals(1, booklistByAuthor.size());
         Assertions.assertEquals(author, booklistByAuthor.get(0).getAuthor());
@@ -38,7 +38,7 @@ class KnihaSluzbaTest {
     void getBooklistByAuthor_None() {
         String author = "Pepíno";
 
-        List<Book> booklistByAuthor = knihaSluzba.getBooklistByTitleOfPublication(author);
+        List<Book> booklistByAuthor = bookService.getBooklistByTitleOfPublication(author);
 
         Assertions.assertEquals(0, booklistByAuthor.size());
     }
@@ -47,7 +47,7 @@ class KnihaSluzbaTest {
     void getBooklistByAuthor_More() {
         String author = "Josef Čapek";
 
-        List<Book> booklistByAuthor = knihaSluzba.getBooklistByTitleOfPublication(author);
+        List<Book> booklistByAuthor = bookService.getBooklistByTitleOfPublication(author);
 
         Assertions.assertEquals(3, booklistByAuthor.size());
         Assertions.assertEquals(author, booklistByAuthor.get(0).getAuthor());
@@ -59,7 +59,7 @@ class KnihaSluzbaTest {
     void getBooklistByTitleOfPublication_Single() {
         int year = 1950;
 
-        List<Book> booklistByTitleOfPublication = knihaSluzba.getBooklistByTitleOfPublication(year);
+        List<Book> booklistByTitleOfPublication = bookService.getBooklistByTitleOfPublication(year);
 
         Assertions.assertEquals(1, booklistByTitleOfPublication.size());
         Assertions.assertEquals(year, booklistByTitleOfPublication.get(0).getYearOfPublication());
@@ -69,7 +69,7 @@ class KnihaSluzbaTest {
     void getBooklistByTitleOfPublication_None() {
         int year = 856;
 
-        List<Book> booklistByTitleOfPublication = knihaSluzba.getBooklistByTitleOfPublication(year);
+        List<Book> booklistByTitleOfPublication = bookService.getBooklistByTitleOfPublication(year);
 
         Assertions.assertEquals(0, booklistByTitleOfPublication.size());
     }
@@ -78,7 +78,7 @@ class KnihaSluzbaTest {
     void getBooklistByTitleOfPublication_More() {
         int year = 1856;
 
-        List<Book> booklistByTitleOfPublication = knihaSluzba.getBooklistByTitleOfPublication(year);
+        List<Book> booklistByTitleOfPublication = bookService.getBooklistByTitleOfPublication(year);
 
         Assertions.assertEquals(2, booklistByTitleOfPublication.size());
         Assertions.assertEquals(year, booklistByTitleOfPublication.get(0).getYearOfPublication());

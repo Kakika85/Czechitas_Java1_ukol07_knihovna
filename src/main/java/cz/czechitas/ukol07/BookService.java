@@ -7,15 +7,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class KnihaSluzba {
+public class BookService {
     private List<Book> bookList;
 
-    public KnihaSluzba() {
-        try (InputStream inputStream = KnihaSluzba.class.getResourceAsStream("knihy.json")) { // "cz/czechitas/ukol07/knihy.json"
+    public BookService() {
+        try (InputStream inputStream = BookService.class.getResourceAsStream("knihy.json")) { // "cz/czechitas/ukol07/knihy.json"
             ObjectMapper objectMapper = new ObjectMapper();
-            bookList = objectMapper.readValue(inputStream, new TypeReference<List<Book>>() {});
+            bookList = objectMapper.readValue(inputStream, new TypeReference<List<Book>>() {
+            });
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Nemělo by být prázdné, v praxi použiji nějakou logovací knihovnu
         }
     }
 
@@ -25,7 +26,7 @@ public class KnihaSluzba {
 
     public List<Book> getBooklistByTitleOfPublication(String author) {
         return bookList.stream()
-            .filter(book -> author.equals(book.getAuthor()))
+            .filter(book -> author != null && author.equals(book.getAuthor()))
             .toList();
     }
 
